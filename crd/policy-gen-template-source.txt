@@ -1,0 +1,2 @@
+https://raw.githubusercontent.com/openshift-kni/cnf-features-deploy/master/ztp/ran-crd/policy-gen-template-crd.yaml
+

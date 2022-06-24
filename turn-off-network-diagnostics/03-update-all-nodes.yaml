@@ -1,0 +1,15 @@
+apiVersion: ran.openshift.io/v1alpha1
+kind: ClusterGroupUpgrade
+metadata:
+  name: cgu-turn-on-network-diags
+  namespace: default
+spec:
+  clusters:
+  - local-cluster
+  - spoke1
+  - spoke2
+  managedPolicies:
+  - network-diagnostic
+  remediationStrategy:
+    maxConcurrency: 3 
+  enable: true
