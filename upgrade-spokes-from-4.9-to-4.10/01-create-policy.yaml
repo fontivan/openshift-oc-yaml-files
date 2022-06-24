@@ -26,8 +26,8 @@ spec:
                   name: version
                 spec:
                   channel: stable-4.10
-                status:
-                  desired:
+                  desiredUpdate:
+                    image: quay.io/openshift-release-dev/ocp-release@sha256:195de2a5ef3af1083620a62a45ea61ac1233ffa27bbce7b30609a69775aeca19
                     version: 4.10.18
           remediationAction: inform
           severity: low
