@@ -1,14 +1,16 @@
 apiVersion: ran.openshift.io/v1alpha1
 kind: ClusterGroupUpgrade
 metadata:
-  name: cgu-turn-on-network-diags
+  name: cgu-apply-conflicting-policies
   namespace: default
 spec:
   clusterLabelSelectors:
     - matchLabels:
-        openshiftVersion: 4.10.20
+        vendor: OpenShift
   managedPolicies:
-  - network-diagnostic-policy
+  - network-diagnostic-policy-on
+  - network-diagnostic-policy-off
   remediationStrategy:
-    maxConcurrency: 10 
+    maxConcurrency: 1
+    timeout: 20
   enable: true

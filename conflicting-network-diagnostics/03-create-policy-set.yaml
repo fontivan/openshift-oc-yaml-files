@@ -1,0 +1,36 @@
+apiVersion: policy.open-cluster-management.io/v1beta1
+kind: PolicySet
+metadata:
+  name: network-diagnostic-conflicting
+  namespace: default
+spec:
+  description: ""
+  policies:
+    - network-diagnostic-policy-on
+    - network-diagnostic-policy-off 
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: network-diagnostic-conflicting-placement
+  namespace: default
+spec:
+  clusterSelector:
+    matchExpressions: []
+  clusterConditions:
+    - status: "True"
+      type: ManagedClusterConditionAvailable
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: network-diagnostic-conflicting-placement
+  namespace: default
+placementRef:
+  name: network-diagnostic-conflicting-placement
+  apiGroup: apps.open-cluster-management.io
+  kind: PlacementRule
+subjects:
+  - name: network-diagnostic-conflicting
+    apiGroup: policy.open-cluster-management.io
+    kind: PolicySet

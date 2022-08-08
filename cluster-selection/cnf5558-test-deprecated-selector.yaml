@@ -9,5 +9,5 @@ spec:
   managedPolicies:
   - network-diagnostic-policy
   remediationStrategy:
-    maxConcurrency: 3 
+    maxConcurrency: 10 
   enable: true

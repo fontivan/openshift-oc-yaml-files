@@ -4,13 +4,11 @@ metadata:
   name: cgu-turn-off-network-diags
   namespace: default
 spec:
-  clusters:
-  - local-cluster
-  - spoke1
-  - spoke2
-  - spoke3
+  clusterLabelSelectors:
+    - matchLabels:
+        vendor: OpenShift
   managedPolicies:
   - network-diagnostic-policy
   remediationStrategy:
-    maxConcurrency: 1
+    maxConcurrency: 2 
   enable: true
