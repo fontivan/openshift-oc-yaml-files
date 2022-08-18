@@ -12,5 +12,5 @@ spec:
   - network-diagnostic-policy-off
   remediationStrategy:
     maxConcurrency: 1
-    timeout: 20
+    timeout: 37
   enable: true

@@ -4,12 +4,12 @@ metadata:
   name: cgu-turn-off-network-diags
   namespace: default
 spec:
-  clusterLabelSelectors:
-    - matchLabels:
-        vendor: OpenShift
+  clusters:
+    - spoke1-sno
+    - spoke2-sno
   managedPolicies:
   - network-diagnostic-policy
   remediationStrategy:
     maxConcurrency: 1
-    timeout: 27 
+    timeout: 18 
   enable: true
