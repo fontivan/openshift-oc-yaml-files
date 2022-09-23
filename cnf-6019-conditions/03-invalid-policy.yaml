@@ -1,13 +1,14 @@
 apiVersion: ran.openshift.io/v1alpha1
 kind: ClusterGroupUpgrade
 metadata:
-  name: cgu-upgrade-spokes
+  name: test-missing-policy-cgu
   namespace: default
 spec:
   clusters:
-  - local-cluster
+    - local-cluster
   managedPolicies:
-  - cluster-version-policy
+  - non-existant-policy
   remediationStrategy:
-    maxConcurrency: 99
-  enable: false
+    maxConcurrency: 1
+    timeout: 30
+  enable: true 

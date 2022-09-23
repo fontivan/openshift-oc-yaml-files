@@ -1,17 +1,17 @@
 apiVersion: policy.open-cluster-management.io/v1beta1
 kind: PolicySet
 metadata:
-  name: openshift-cluster-version
+  name: cluster-version
   namespace: default
 spec:
   description: ""
   policies:
-    - openshift-cluster-version
+    - cluster-version-policy 
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: openshift-cluster-version-placement
+  name: cluster-version-placement
   namespace: default
 spec:
   clusterSelector:
@@ -23,14 +23,14 @@ spec:
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: openshift-cluster-version-placement
+  name: cluster-version-placement
   namespace: default
 placementRef:
-  name: openshift-cluster-version-placement
+  name: cluster-version-placement
   apiGroup: apps.open-cluster-management.io
   kind: PlacementRule
 subjects:
-  - name: openshift-cluster-version
+  - name: cluster-version
     apiGroup: policy.open-cluster-management.io
     kind: PolicySet
 

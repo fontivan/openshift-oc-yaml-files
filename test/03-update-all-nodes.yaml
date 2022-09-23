@@ -1,13 +1,14 @@
 apiVersion: ran.openshift.io/v1alpha1
 kind: ClusterGroupUpgrade
 metadata:
-  name: cgu-upgrade-spokes
+  name: cgu-cluster-version-diags
   namespace: default
 spec:
-  clusters:
-  - local-cluster
+  clusterLabelSelectors:
+    - matchLabels:
+        vendor: OpenShift
   managedPolicies:
   - cluster-version-policy
   remediationStrategy:
-    maxConcurrency: 99
+    maxConcurrency: 1
   enable: false

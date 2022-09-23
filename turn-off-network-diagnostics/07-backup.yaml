@@ -4,11 +4,13 @@ metadata:
   name: cgu-turn-off-network-diags
   namespace: default
 spec:
-  clusters:
-    - local-cluster
+  clusterLabelSelectors:
+    - matchLabels:
+        vendor: OpenShift
   managedPolicies:
   - network-diagnostic-policy
   remediationStrategy:
     maxConcurrency: 1
-    timeout: 5 
-  enable: false 
+    timeout: 27 
+  backup: true
+  enable: true

@@ -1,7 +1,7 @@
 apiVersion: ran.openshift.io/v1alpha1
 kind: ClusterGroupUpgrade
 metadata:
-  name: cgu-turn-off-network-diags
+  name: test-upgrade-with-precaching-cgu
   namespace: default
 spec:
   clusters:
@@ -10,5 +10,6 @@ spec:
   - network-diagnostic-policy
   remediationStrategy:
     maxConcurrency: 1
-    timeout: 5 
-  enable: false 
+  timeout: 10
+  preCaching: true
+  enable: true 

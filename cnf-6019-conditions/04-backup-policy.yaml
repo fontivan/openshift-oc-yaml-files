@@ -1,15 +1,15 @@
 apiVersion: ran.openshift.io/v1alpha1
 kind: ClusterGroupUpgrade
 metadata:
-  name: cgu-upgrade-spoke3
+  name: test-upgrade-with-backup-cgu
   namespace: default
 spec:
   clusters:
-  - spoke3
-  backup: true
+    - local-cluster
   managedPolicies:
-  - openshift-cluster-version
+  - network-diagnostic-policy
   remediationStrategy:
-    maxConcurrency: 3
-  enable: true
-
+    maxConcurrency: 1
+  timeout: 10
+  backup: true
+  enable: true 

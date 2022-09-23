@@ -1,14 +1,14 @@
 apiVersion: ran.openshift.io/v1alpha1
 kind: ClusterGroupUpgrade
 metadata:
-  name: cgu-upgrade-spoke2
+  name: cgu-upgrade-spokes
   namespace: default
 spec:
   clusters:
-  - spoke2
+  - spoke2-sno 
   managedPolicies:
   - openshift-cluster-version
   remediationStrategy:
-    maxConcurrency: 3
+    maxConcurrency: 99
   enable: true
 

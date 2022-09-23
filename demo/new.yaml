@@ -5,9 +5,11 @@ metadata:
   namespace: default
 spec:
   clusters:
-  - local-cluster
+  - spoke2-sno 
   managedPolicies:
-  - cluster-version-policy
+  - openshift-cluster-version
   remediationStrategy:
     maxConcurrency: 99
-  enable: false
+  batchTimeoutAction: Abort
+  enable: true
+
