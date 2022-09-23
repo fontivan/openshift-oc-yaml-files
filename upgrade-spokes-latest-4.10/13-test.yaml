@@ -1,0 +1,14 @@
+apiVersion: ran.openshift.io/v1alpha1
+kind: ClusterGroupUpgrade
+metadata:
+  name: cgu-conflicting-upgrade-spokes
+  namespace: default
+spec:
+  clusters:
+  - local-cluster
+  managedPolicies:
+   - cluster-version-policy
+   - extra-cluster-version-policy
+  remediationStrategy:
+    maxConcurrency: 99
+  enable: false

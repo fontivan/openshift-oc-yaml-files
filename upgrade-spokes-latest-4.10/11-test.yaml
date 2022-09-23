@@ -1,0 +1,41 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: extra-cluster-version-policy
+  namespace: default
+spec:
+  disabled: false
+  policy-templates:
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: extra-cluster-version-policy-config
+      spec:
+        namespaceselector:
+          exclude:
+          - kube-*
+          include:
+          - '*'
+        object-templates:
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: config.openshift.io/v1
+            kind: ClusterVersion
+            metadata:
+              name: version
+            spec:
+              channel: stable-4.10
+              desiredUpdate:
+                force: false
+                version: 4.10.28
+              upstream: https://api.openshift.com/api/upgrades_info/v1/graph
+            status:
+              history:
+              - state: Completed
+                version: 4.10.24
+
+        remediationAction: inform
+        severity: low
+  remediationAction: inform
+
